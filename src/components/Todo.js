@@ -11,7 +11,7 @@ const Todo = ({ todo }) => {
   return (
     <div className="todo">
       <div className="todo-container">
-        <h2 className="todo-id">#{todo.id}</h2>
+        <h2 className="todo-id">Id # {todo.id}</h2>
         {edit ? (
           <input
             type="text"

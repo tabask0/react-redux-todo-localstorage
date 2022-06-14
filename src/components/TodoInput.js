@@ -8,6 +8,18 @@ const TodoInput = () => {
   const [message, setMessage] = useState();
   const dispatch = useDispatch();
 
+  const handleChange = (e) => {
+    if (e.key === "Enter" || e.onClick) {
+      dispatch(
+        addTodo({
+          id: uniqid(),
+          message: message,
+        })
+      );
+      setMessage("");
+    }
+  };
+
   return (
     <div>
       <h1 style={{ color: "white", fontWeight: "bold" }}>Add a new to-do</h1>
@@ -16,6 +28,7 @@ const TodoInput = () => {
           placeholder="Walk the dog"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
+          onKeyPress={(e) => handleChange(e)(console.log(e))}
         />
         <Button
           type="primary"
@@ -25,7 +38,7 @@ const TodoInput = () => {
                 id: uniqid(),
                 message: message,
               })
-            )
+            )(setMessage(""))
           }
         >
           Add
